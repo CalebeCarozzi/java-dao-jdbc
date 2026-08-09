@@ -14,27 +14,38 @@ public class Main {
 
         SellerDao sellerDao = DaoFactory.crateSellerDao();
 
-        System.out.println("==== TESTE 1: seller findById ====");
+        System.out.println("\n==== TESTE 1: seller findById ====");
         Seller seller = sellerDao.findById(3);
         System.out.println(seller);
 
 
-        System.out.println("==== TESTE 2: seller findByDepartment ====");
+        System.out.println("\n==== TESTE 2: seller findByDepartment ====");
         Department department = new Department(2, null);
         List<Seller> list1 = sellerDao.findByDepartment(department);
         list1.forEach(System.out::println);
         System.out.println(department);
 
-        System.out.println("==== TESTE 3: seller findAll ====");
+        System.out.println("\n==== TESTE 3: seller findAll ====");
         List<Seller> list2 = sellerDao.findAll();
         list2.forEach(System.out::println);
 
-        System.out.println("==== TESTE 4: seller Insert ====");
+        System.out.println("\n==== TESTE 4: seller Insert ====");
         Seller seller1 = new Seller(null, "Pedro testeiro", "pedro@gmail.com", new Date(), 4000.0, department);
         sellerDao.insert(seller1);
         System.out.println("Inserted, new id = " + seller1.getId());
         list1 = sellerDao.findByDepartment(department);
         list1.forEach(System.out::println);
+
+        System.out.println("\n==== TESTE 5: seller Update ====");
+        seller = sellerDao.findById(1);
+        System.out.println(seller);
+        seller.setName("Mario Martinelli Junior Neymar");
+        sellerDao.update(seller);
+        seller = sellerDao.findById(1);
+        System.out.println(seller);
+
+
+
     }
 }
 
