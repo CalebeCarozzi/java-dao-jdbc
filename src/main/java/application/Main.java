@@ -6,6 +6,7 @@ import model.entities.Department;
 import model.entities.Seller;
 
 import javax.crypto.spec.PSource;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -27,6 +28,13 @@ public class Main {
         System.out.println("==== TESTE 3: seller findAll ====");
         List<Seller> list2 = sellerDao.findAll();
         list2.forEach(System.out::println);
+
+        System.out.println("==== TESTE 4: seller Insert ====");
+        Seller seller1 = new Seller(null, "Pedro testeiro", "pedro@gmail.com", new Date(), 4000.0, department);
+        sellerDao.insert(seller1);
+        System.out.println("Inserted, new id = " + seller1.getId());
+        list1 = sellerDao.findByDepartment(department);
+        list1.forEach(System.out::println);
     }
 }
 
