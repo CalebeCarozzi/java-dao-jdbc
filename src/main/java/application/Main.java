@@ -8,10 +8,12 @@ import model.entities.Seller;
 import javax.crypto.spec.PSource;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         SellerDao sellerDao = DaoFactory.crateSellerDao();
 
         System.out.println("\n==== TESTE 1: seller findById ====");
@@ -44,6 +46,15 @@ public class Main {
         seller = sellerDao.findById(1);
         System.out.println(seller);
 
+        System.out.println("\n==== TESTE 6: seller Delete ====");
+        System.out.println("Digite um Id para deletar um Seller: ");
+        int id = sc.nextInt();
+        seller = sellerDao.findById(id);
+        System.out.println("Seller sendo deletado: " + seller);
+        sellerDao.deleteById(id);
+        System.out.println("Delete complete. ");
+        seller = sellerDao.findById(id);
+        System.out.println("Busca do seller deletado para teste: " + seller);
 
 
     }
