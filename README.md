@@ -22,3 +22,5 @@ A aplicação trabalha com as entidades `Seller` e `Department`, separando a ló
 - MySQL
 - JDBC
 - Maven
+---
+> **Obs:** Projeto feito totalmente a mão, sem vibecoding
